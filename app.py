@@ -38,8 +38,8 @@ def submit_survey():
     # Compute submission_id if not provided
     sub_id = submission.submission_id
     if not sub_id:
-        hour_bucket = datetime.now(timezone.utc).strftime("%Y%m%d%H")
-        sub_id = sha256_hex(f"{submission.email}{hour_bucket}")
+        sec_bucket = datetime.now(timezone.utc).strftime("%Y%m%d%H%M%S")
+        sub_id = sha256_hex(f"{submission.email}{sec_bucket}")
 
     # Hash PII
     email_hash = sha256_hex(submission.email)
